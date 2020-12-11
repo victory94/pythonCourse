@@ -28,13 +28,16 @@ def check_winner(board, current_player_mark):
         if magic_square_calc_diag == 15 or magic_square_calc_anti_diag == 15:
             is_winner = True
 
-    magic_square_calc = 0
+    magic_square_calc_row = 0
+    magic_square_calc_col = 0
     # Checks if winner is in single row or single column
     for row in range(3):
         for col in range(3):
             if board[row][col] == current_player_mark:
-                magic_square_calc += magic_square[row][col]
-            if magic_square_calc == 15:
+                magic_square_calc_row += magic_square[row][col]
+            if board[col][row] == current_player_mark:
+                magic_square_calc_col += magic_square[col][row]
+            if magic_square_calc_row == 15 or magic_square_calc_col == 15:
                 is_winner = True
 
     return is_winner
