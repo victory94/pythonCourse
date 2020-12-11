@@ -8,22 +8,17 @@ magic_square = [[8, 3, 4], [1, 5, 9], [6, 7, 2]]
 # Returns True if won, False otherwise
 def check_winner(board, current_player):
     is_winner = False
-    magic_square_calc = 0
+    magic_square_calc_diag = 0
+    magic_square_calc_anti_diag = 0
 
-    # Checks if current_player has won the diagonal
+    # Checks if current_player has won the diagonal or reverse diagonal
     for diag in range(3):
         if board[diag][diag] == current_player:
-            magic_square_calc += magic_square[diag][diag]
-        if magic_square_calc == 15:
-            return True
-
-    magic_square_calc = 0
-    # Checks reverse diagonal
-    for diag in range(3):
-        if board[diag-2][diag] == current_player:
-            magic_square_calc += magic_square[diag][diag]
-        if magic_square_calc == 15:
-            return True
+            magic_square_calc_diag += magic_square[diag][diag]
+        if board[2-diag][diag] == current_player:
+            magic_square_calc_anti_diag += magic_square[2-diag][diag]
+        if magic_square_calc_diag == 15 or magic_square_calc_anti_diag == 15:
+            is_winner = True
 
     magic_square_calc = 0
     # Checks if winner is in single row or single column
@@ -32,8 +27,8 @@ def check_winner(board, current_player):
             if board[row][col] == current_player:
                 magic_square_calc += magic_square[row][col]
             if magic_square_calc == 15:
-                return True
-    print(magic_square_calc)
+                is_winner = True
+
     return is_winner
 
 
@@ -68,7 +63,6 @@ def user_input_col():
 if __name__ == '__main__':
     tic_tac_toe = [[None for col in range(3)]for row in range(3)]
     check_winner(tic_tac_toe, "X")
-
     game_close = "N"
     while game_close != "Y":
         print('\n'*100)
@@ -82,12 +76,14 @@ if __name__ == '__main__':
         else:
             tic_tac_toe[row_number][col_number] = current_player["current_player"]
             if check_winner(tic_tac_toe, current_player["current_player"]):
+                print('\n' * 100)
                 display(tic_tac_toe)
                 print(str(current_player["current_player"]) + str(" har vunnit!"))
                 game_close = "Y"
                 break
-            # Checks for -, since we start with board full of -
-            if "-" in tic_tac_toe:
+            # Checks for None, since we start with board full of None
+            space_exists = any(None in sub for sub in tic_tac_toe)
+            if not space_exists:
                 print("Speltavla full")
                 break
             if current_player["current_player"] == "X":
