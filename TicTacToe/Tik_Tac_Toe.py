@@ -1,21 +1,29 @@
 
-
+import random
 current_player = {"current_player": "X"}
 magic_square = [[8, 3, 4], [1, 5, 9], [6, 7, 2]]
 
 
+#Chooses randomly who starts
+def choose_starter_mark():
+    if random.randint(0,1) == 0:
+        return "X"
+    else:
+        return "O"
+
+
 # Check if current_player has won the board.
 # Returns True if won, False otherwise
-def check_winner(board, current_player):
+def check_winner(board, current_player_mark):
     is_winner = False
     magic_square_calc_diag = 0
     magic_square_calc_anti_diag = 0
 
     # Checks if current_player has won the diagonal or reverse diagonal
     for diag in range(3):
-        if board[diag][diag] == current_player:
+        if board[diag][diag] == current_player_mark:
             magic_square_calc_diag += magic_square[diag][diag]
-        if board[2-diag][diag] == current_player:
+        if board[2-diag][diag] == current_player_mark:
             magic_square_calc_anti_diag += magic_square[2-diag][diag]
         if magic_square_calc_diag == 15 or magic_square_calc_anti_diag == 15:
             is_winner = True
@@ -24,7 +32,7 @@ def check_winner(board, current_player):
     # Checks if winner is in single row or single column
     for row in range(3):
         for col in range(3):
-            if board[row][col] == current_player:
+            if board[row][col] == current_player_mark:
                 magic_square_calc += magic_square[row][col]
             if magic_square_calc == 15:
                 is_winner = True
@@ -66,8 +74,8 @@ def user_input_col():
 #Main method for Tic tac toe game
 if __name__ == '__main__':
     tic_tac_toe = [[None for col in range(3)]for row in range(3)]
-    check_winner(tic_tac_toe, "X")
     game_close = "N"
+    current_player["current_player"] = choose_starter_mark()
     while game_close != "Y":
         print('\n'*100)
         display(tic_tac_toe)
