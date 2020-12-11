@@ -32,14 +32,16 @@ def check_winner(board, current_player):
     return is_winner
 
 
+#Dispays game matrix
 def display(matrix):
     print("Tic tac toe")
     print("\n")
-    print("Rad 1 " + str(matrix[0]))
-    print("Rad 2 " + str(matrix[1]))
-    print("Rad 3 " + str(matrix[2]))
+    print("Rad 0 " + str(matrix[0]))
+    print("Rad 1 " + str(matrix[1]))
+    print("Rad 2 " + str(matrix[2]))
 
 
+#Checks user input for row choice
 def user_input_row():
     acceptable_range = ['0', '1', '2']
     user_choice = "START"
@@ -50,6 +52,7 @@ def user_input_row():
     return user_choice
 
 
+#Checks user input for col choice
 def user_input_col():
     acceptable_range = ['0', '1', '2']
     user_choice = "START"
@@ -60,6 +63,7 @@ def user_input_col():
     return user_choice
 
 
+#Main method for Tic tac toe game
 if __name__ == '__main__':
     tic_tac_toe = [[None for col in range(3)]for row in range(3)]
     check_winner(tic_tac_toe, "X")
