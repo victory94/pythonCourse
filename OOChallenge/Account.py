@@ -16,7 +16,8 @@ class Account:
 
     # Adds amount to balance
     def deposit(self, amount):
-        pass
+        self.balance = self.balance + amount
+        return "Deposit Accepted"
 
     # Removes amount from balance
     def withdraw(self, amount):
