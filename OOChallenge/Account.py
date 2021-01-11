@@ -24,10 +24,22 @@ class Account:
     def withdraw(self, amount):
         if self.balance - amount < 0:
             return "Funds Unavailable!"
-        
+
         self.balance = self.balance - amount
         return "Withdrawal Accepted"
 
 
 if __name__ == '__main__':
-    pass
+    # 1. Instantiate the class
+    acct1 = Account('Jose', 100)
+    # 2. Print the object
+    print(acct1)
+    # 3. Show the account owner attribute
+    print(acct1.owner)
+    # 4. Show the account balance attribute
+    print(acct1.balance)
+    # 5. Make a series of deposits and withdrawals
+    print(acct1.deposit(50))
+    print(acct1.withdraw(75))
+    # 6. Make a withdrawal that exceeds the available balance
+    print(acct1.withdraw(500))
