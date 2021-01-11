@@ -14,10 +14,12 @@ class Account:
         self.owner = owner
         self.balance = balance
 
-    def deposit(self):
+    # Adds amount to balance
+    def deposit(self, amount):
         pass
 
-    def withdraw(self):
+    # Removes amount from balance
+    def withdraw(self, amount):
         pass
 
 
