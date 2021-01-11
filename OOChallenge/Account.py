@@ -10,7 +10,14 @@
 
 
 class Account:
-    pass
+    def __init__(self, owner, balance):
+        pass
+
+    def deposit(self):
+        pass
+
+    def withdraw(self):
+        pass
 
 
 if __name__ == '__main__':
