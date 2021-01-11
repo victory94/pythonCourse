@@ -20,8 +20,13 @@ class Account:
         return "Deposit Accepted"
 
     # Removes amount from balance
+    # if overdrawn return error message
     def withdraw(self, amount):
-        pass
+        if self.balance - amount < 0:
+            return "Funds Unavailable!"
+        
+        self.balance = self.balance - amount
+        return "Withdrawal Accepted"
 
 
 if __name__ == '__main__':
