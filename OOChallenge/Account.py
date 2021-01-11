@@ -28,6 +28,9 @@ class Account:
         self.balance = self.balance - amount
         return "Withdrawal Accepted"
 
+    def __str__(self):
+        return f"Account Owner:   {self.owner} \nAccount balance: ${self.balance}"
+
 
 if __name__ == '__main__':
     # 1. Instantiate the class
