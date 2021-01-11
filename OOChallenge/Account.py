@@ -11,7 +11,8 @@
 
 class Account:
     def __init__(self, owner, balance):
-        pass
+        self.owner = owner
+        self.balance = balance
 
     def deposit(self):
         pass
