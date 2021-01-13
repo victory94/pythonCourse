@@ -25,9 +25,18 @@ def problem2():
 # Write a function that asks for an integer and prints the square of it.
 # Use a while loop with a try, except, else block to account for incorrect inputs.
 def ask():
-    # TODO: Add while loop
-    # TODO: Ask for integer
-    # TODO: print square of integer
+    end_input = False
+    while not end_input:
+
+        try:
+            num = input("Input an integer: ")
+            num = int(num)
+        except ValueError:
+            print("An error occurred! Please try again!")
+        else:
+            print("Thank you, your number squared is: " + str(num**2))
+            end_input = True
+
     # TODO: Add try except else block to account for incorrect inputs (TypeError?)
     pass
 
