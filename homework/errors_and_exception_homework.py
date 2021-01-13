@@ -12,10 +12,13 @@ def problem1():
 def problem2():
     x = 5
     y = 0
+    try:
+        z = x / y
+    except ZeroDivisionError:
+        print("Can't divide by 0")
+    finally:
+        print("All Done")
 
-    z = x / y
-
-    # TODO: Add try catch statement
     pass
 
 
