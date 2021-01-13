@@ -1,9 +1,10 @@
 # Handle the exception thrown by the code below by using try and except blocks.
 def problem1():
-    for i in ['a', 'b', 'c']:
-        print(i ** 2)
-    # TODO: Add try catch statement
-    pass
+    try:
+        for i in [2, 'b', 'c']:
+            print(i ** 2)
+    except TypeError:
+        print("Wrong type of input")
 
 
 # Handle the exception thrown by the code below by using try and except blocks.
