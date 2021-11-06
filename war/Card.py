@@ -8,10 +8,15 @@ values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eig
 
 class Card:
 
-    def __init__(self):
+    def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
         self.value = values[rank]
 
     def __str__(self):
         return self.rank + ' of ' + self.suit
+
+
+if __name__ == '__main__':
+    my_card = Card(suits[0], ranks[0])
+    print(my_card)
