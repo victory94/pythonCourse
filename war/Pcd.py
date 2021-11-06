@@ -35,9 +35,36 @@ class Deck:
         return self.all_cards.pop()
 
 
+# Player class
+# Player starts out with a name and no cards on hand
+class Player:
+    def __init__(self, name):
+        self.list_of_cards = []
+        self.name = name
+
+    # Add either list of cards or single card
+    def add_cards(self, new_cards):
+        if type(new_cards) == list:
+            self.list_of_cards.extend(new_cards)
+        else:
+            self.list_of_cards.append(new_cards)
+
+    # Remove card from top of deck
+    def remove_top_card(self):
+        self.list_of_cards.pop(0)
+
+    def __str__(self):
+        return f'Player {self.name} has {len(self.list_of_cards)} cards.'
+
+
 if __name__ == '__main__':
     my_deck = Deck()
     print(my_deck.all_cards[0])
     my_deck.shuffle()
     print(len(my_deck.all_cards))
     print(my_deck.all_cards[0])
+
+    player_1 = Player("Player 1")
+    player_1.add_cards(my_deck.deal_one())
+    print(player_1)
+    print(len(my_deck.all_cards))
